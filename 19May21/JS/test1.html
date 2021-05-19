@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p>My first paragraph.</p>
+    <h1 id="check"></h1>
+    <!-- event handling -->
+    <button onclick="document.getElementById('demo').innerHTML = Date()">
+      Event Handling
+    </button>
+    <p id="demo"></p>
+
+    <button onclick="this.innerHTML = Date()">Click me</button>
+    <button id="dDate" onmouseover="displayDate()">
+      See Date! on MouseOver
+    </button>
+
+    <button
+      id="arraysCheck"
+      onclick="document.getElementById('arraysCheck').innerHTML = cars"
+    >
+      Check Array
+    </button>
+
+    <p id="LoopingArray"></p>
+
+    <p>Array Loop using Array.forEach()</p>
+
+    <p id="arrayUsingforEach"></p>
+
+    <!-- Form validation -->
+    <form name="myForm" onsubmit="validateform()">
+      <label>Name:</label>
+      <input type="text" name="fname" />
+      <button type="submit" value="Submit">Submit</button>
+    </form>
+
+    <h4>Validate a Number here!</h4>
+    <form onsubmit="validateformNumber()">
+      <label>Number:</label>
+      <input id="num" />
+      <button type="submit" value="Submit">Submit</button>
+    </form>
+
+    <!-- Automatic form validation(required) -->
+    <h4>Automatic form validation(required)</h4>
+    <form>
+      <input type="text" name="fname" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <!-- JS validation using API  -->
+    <h4>JS form validation using API</h4>
+    <input id="id1" type="number" min="100" max="300" required />
+    <button onclick="validatNumberUsingApiCall()">OK</button>
+    
+    <!-- JS Validity DOM properties example (API)  -->
+    <h4>Range Overflow Property</h4>
+    <input id="rangeOverFlow" type="number" max="100" required />
+    <button onclick="rangeOverflowPropFunc()">OK</button>
+
+    <!-- JS Validity DOM properties example (API)  -->
+    <h4>Range Underflow Property</h4>
+    <input id="rangeUnderFlow" type="number" min="100" required />
+    <button onclick="rangeUnderflowPropFunc()">OK</button>
+
+    <script>
+          var y = 2 ** 3
+          y = 10
+          console.log(y)
+          var x = 6 + 'ashar'
+          var z = 'ashar' + 6
+
+          console.log(x)
+          console.log(z)
+          console.log(typeof x)
+          // x = 6;
+          // window.alert(x);
+          // let x;
+          // console.log("out", x);
+
+          //     for(var x = 1; x < 10; x++){
+
+          //     }
+          //     console.log("in", x);
+
+          // console.log("out", x);
+
+          //const object var
+          const person = {
+            name: 'ashar',
+            age: 20,
+            detail: function () {
+              return this.name + ' ' + this.age
+            },
+          }
+          // person = {name: "ashar", age: 20};
+          console.log(person.name)
+          console.log(person.age)
+          console.log(person.detail())
+          var a = new String()
+          var b = new Number()
+          var c = new Boolean()
+
+          //const array
+          const arr = ['ashar', 'abrar', 'ansari']
+          console.log(arr)
+          arr[0] = 'shabnoor'
+          console.log(arr)
+          arr.push('momin')
+          console.log(arr)
+          console.log(typeof arr)
+          console.log(Math.PI in Math)
+          // Event Handling
+          function displayDate() {
+            document.getElementById('dDate').innerHTML = Date()
+          }
+          // String
+          var check = 'I\'m Ashar "Ashar Ansari" The awesome guy'
+          console.log(check)
+          console.log("String's lenth is ", check.length)
+          // String as Objects
+          var x = 'ashar'
+          var xy = new String('ashar')
+          console.log(x, ' ', typeof x, ' ', xy, ' ', typeof xy)
+
+          // String Methods
+          var str = "Please locate where 'locate' occurs!"
+          var pos = str.indexOf('locate', 15)
+          var poss = str.lastIndexOf('occurs', 34)
+          console.log(pos)
+          console.log(poss)
+
+          // Arrays
+
+          var cars = ['Audi', 'Prado', 'McLaren']
+          var carss = new Array('Ferrari', 'Ford', 'Fiat') //do not use this method
+          console.log(cars)
+          console.log(carss)
+
+          // JS Object in arrays example
+          var personObj = { firstName: 'Ashar', lastName: 'Asnari' }
+          console.log(personObj.firstName)
+          console.log(personObj['lastName'])
+
+          // looping over array
+
+          var fruits, flen, text, i
+          fruits = ['Apple', 'Mango', 'Chikoo', 'Orange', 'Pineapple']
+          flen = fruits.length
+
+          text = '<ul>'
+
+          for (i = 0; i < flen; i++) {
+            text += '<li>' + fruits[i] + '</li>'
+          }
+          text += '</ul>'
+
+          document.getElementById('LoopingArray').innerHTML = text
+
+          // Using for each fuction
+
+          text = '<ul>'
+          fruits.forEach(myFun)
+          text += '</ul>'
+
+          document.getElementById('arrayUsingforEach').innerHTML = text
+
+          function myFun(value) {
+            text += '<li>' + value + '</li>'
+          }
+
+          // form Validation
+          validateform = () => {
+            var x = document.forms['myForm']['fname'].value
+            if (x == '') {
+              alert('Name must be filled out')
+              return false
+            }
+          }
+          validateformNumber = () => {
+            var x, text
+
+            x = document.getElementById('num').value
+
+            if (isNaN(x) || x < 0 || x > 100 || x == '') {
+              alert('Not a valid number!')
+              return false
+            }
+          }
+
+          validatNumberUsingApiCall = () =>{
+            var inpObj = document.getElementById("id1");
+            if (!inpObj.checkValidity()) {
+                alert(inpObj.validationMessage);
+            }else {
+                alert("Valid Input");
+            } 
+          }
+
+          rangeOverflowPropFunc = () => {
+            //   var txt = "";
+                if(document.getElementById("rangeOverFlow").validity.rangeOverflow){
+                    alert("Value too Large");
+                }else{
+                    alert("Valid input");
+                }
+          }
+
+          rangeUnderflowPropFunc = () =>{
+            if(document.getElementById("rangeUnderFlow").validity.rangeUnderflow){
+                    alert("Value too small");
+                }else{
+                    alert("Valid input");
+                }
+          }
+
+          // Creatting Objects
+          // method 1: using object literals
+          var man = {
+            fname: "Ashar",
+            lname: "Ansari",
+            fullName: function(){
+              return this.fname + " " + this.lname;
+            }
+          };
+          // method 2: using JS new keyword
+          var newMan = new Object();
+          newMan.firstName = "Launch";
+          newMan.lastName = "Nodes";
+    </script>
+  </body>
+</html>
