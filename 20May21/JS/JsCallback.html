@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+    </body>
+
+    <script>
+      // JS Promise
+      function myDisplay (some){
+        document.getElementById("demo").innerHTML = some;
+      }
+      let myPromise = new Promise(function(myResolve, myReject){
+        let x = 10;
+
+        if(x == 110){
+          myResolve("Promise Resolved");
+        }else{
+          myReject("Promise Not Resolved");
+        }
+      });
+
+      myPromise.then(
+        function(value){myDisplay(value);},
+        function(error){myDisplay(error);}
+      );
+
+      // Promise using callback on setTimeout()
+      let myPromise2 = new Promise(function(myResolve, myReject){
+
+        setTimeout(function(){
+          myResolve("Happy Launchnodes!");
+        });
+      });
+
+      myPromise2.then(
+        function(value){
+          document.getElementById("demo2").innerHTML = value;
+        }
+      )
+    </script>
+</html>
