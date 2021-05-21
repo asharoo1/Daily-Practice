@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h1>My First Web Page</h1>
+    <p id="demo"></p>
+    <p id="demo2"></p>
+
+    <!-- dding New Node via JS -->
+    <div id="div1">
+      <h3 id="h1">Adding New Node via JS</h3>
+    </div>
+    </body>
+
+    <script>
+      // JS Promise
+      function myDisplay (some){
+        document.getElementById("demo").innerHTML = some;
+      }
+      let myPromise = new Promise(function(myResolve, myReject){
+        let x = 10;
+
+        if(x == 110){
+          myResolve("Promise Resolved");
+        }else{
+          myReject("Promise Not Resolved");
+        }
+      });
+
+      myPromise.then(
+        function(value){myDisplay(value);},
+        function(error){myDisplay(error);}
+      );
+
+      // Promise using callback on setTimeout()
+      let myPromise2 = new Promise(function(myResolve, myReject){
+
+        setTimeout(function(){
+          myResolve("Happy Launchnodes!");
+        });
+      });
+
+      myPromise2.then(
+        function(value){
+          document.getElementById("demo2").innerHTML = value;
+        }
+      )
+
+      // dding New Node via JS
+
+      var para = document.createElement("p");
+      var node = document.createTextNode("This is created newly via JS");
+
+      para.appendChild(node);
+      var element = document.getElementById("div1");
+      element.appendChild(para);
+
+
+      // insertBefore
+      var paraNew = document.createElement("p");
+      var nodeNew = document.createTextNode("This is created newly using insertBefore() via JS");
+
+      paraNew.appendChild(nodeNew);
+      var elementNew = document.getElementById("div1");
+      var childNew = document.getElementById("p");
+
+      element.insertBefore(paraNew,childNew);
+    </script>
+</html>
